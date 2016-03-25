@@ -1,0 +1,14 @@
+#N canvas 544 56 398 225 10;
+#X text -108 -47 pd implementation of the method presented by 'viznut'
+on the countercomplex-blog.;
+#X obj -82 -6 phasor~ 0.01;
+#X obj -91 132 dac~;
+#X obj -82 17 expr~ int($v1*15000000);
+#X obj -82 44 expr~ max(min($v1*(($v1>>12|$v1>>8)&63&$v1>>4) \, 1)
+\, -1);
+#X obj -82 74 hip~ 100;
+#X connect 1 0 3 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 5 0 2 0;
+#X connect 5 0 2 1;

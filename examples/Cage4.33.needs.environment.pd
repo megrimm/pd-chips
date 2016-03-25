@@ -1,0 +1,6 @@
+#N canvas 41 127 450 300 10;
+#X obj 179 121 del 273000;
+#X obj 301 102 adc~;
+#X obj 301 158 dac~;
+#X connect 1 0 2 0;
+#X connect 1 1 2 1;

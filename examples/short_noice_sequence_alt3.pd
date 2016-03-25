@@ -1,0 +1,26 @@
+#N canvas 648 99 315 256 10;
+#X obj 34 108 snapshot~;
+#X obj 34 226 dac~;
+#X obj 34 42 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1
+;
+#X text 27 6 1 turn dsp on;
+#X text 27 20 2 turn metro on;
+#X text 78 226 WARNING! Loud sounds!;
+#X obj 43 152 osc~;
+#X obj 12 176 cos~;
+#X obj 60 198 cos~;
+#X obj 43 130 * 304;
+#X obj 34 62 metro 72.5;
+#X obj 41 85 osc~ 1000;
+#X connect 0 0 9 0;
+#X connect 0 0 7 0;
+#X connect 0 0 11 1;
+#X connect 2 0 10 0;
+#X connect 6 0 1 1;
+#X connect 6 0 1 0;
+#X connect 7 0 1 0;
+#X connect 7 0 8 0;
+#X connect 8 0 1 1;
+#X connect 9 0 6 0;
+#X connect 10 0 0 0;
+#X connect 11 0 0 0;

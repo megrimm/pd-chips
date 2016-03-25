@@ -1,0 +1,26 @@
+#N canvas 581 248 665 358 10;
+#X obj 60 293 dac~;
+#X obj 97 224 vd~ \$0delay;
+#X obj 172 224 delwrite~ \$0delay 100;
+#X obj 126 129 samphold~;
+#X obj 127 151 expr~ (1+$v1)*200*(1-$v2)*cos((1-$v2)*(20+(200*$v1)))
+;
+#X obj 52 94 osc~ 1;
+#X obj 98 199 *~;
+#X obj 178 105 phasor~ 7;
+#X obj 126 174 *~ 0.125;
+#X obj 126 70 phasor~ 2.25;
+#X connect 1 0 0 1;
+#X connect 1 0 0 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 4 0 8 0;
+#X connect 5 0 2 0;
+#X connect 5 0 0 1;
+#X connect 5 0 0 0;
+#X connect 6 0 1 0;
+#X connect 7 0 3 1;
+#X connect 7 0 4 1;
+#X connect 7 0 6 0;
+#X connect 8 0 6 1;
+#X connect 9 0 3 0;

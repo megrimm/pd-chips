@@ -1,0 +1,23 @@
+#N canvas 215 50 550 421 10;
+#X obj 59 71 samphold~;
+#X obj 410 216 mtof~;
+#X obj 380 364 dac~;
+#X obj 388 324 *~;
+#X obj 390 95 expr~ 0.2*(1+($v1*-1));
+#X obj 410 284 phasor~;
+#X obj 59 176 expr~ $v1 \; if (($v1*11)>5 \, 2*(int($v1*6.49))+54 \,
+2*(int($v1*5.49))+55);
+#X obj 390 139 lop~ 800;
+#X obj 117 44 phasor~ 7;
+#X obj 59 8 phasor~ 2.25;
+#X connect 0 0 6 0;
+#X connect 1 0 5 0;
+#X connect 3 0 2 0;
+#X connect 3 0 2 1;
+#X connect 4 0 7 0;
+#X connect 5 0 3 1;
+#X connect 6 1 1 0;
+#X connect 7 0 3 0;
+#X connect 8 0 0 1;
+#X connect 8 0 4 0;
+#X connect 9 0 0 0;

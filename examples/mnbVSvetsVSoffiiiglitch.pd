@@ -1,0 +1,32 @@
+#N canvas 421 318 665 358 10;
+#X obj 60 293 dac~;
+#X obj 97 224 vd~ \$0delay;
+#X obj 126 129 samphold~;
+#X obj 52 94 osc~ 1;
+#X obj 98 199 *~;
+#X obj 126 174 *~ 0.1;
+#X obj 172 224 delwrite~ \$0delay 200;
+#X obj 178 105 phasor~ 55;
+#X obj 126 70 phasor~ 10;
+#X obj 127 151 expr~ (1+$v1)*777*(1-$v2)*cos((2.2-$v2)*(44+(100*$v1)))
+;
+#X obj 199 38 flatspace/knob 32 32 0 10 0 0 empty empty empty 0 -8
+0 8 -262144 -1 -1 1000 1;
+#X obj 247 73 flatspace/knob 32 32 0 50 0 0 empty empty empty 0 -8
+0 8 -262144 -1 -1 1900 1;
+#X connect 1 0 0 1;
+#X connect 1 0 0 0;
+#X connect 2 0 9 0;
+#X connect 3 0 0 1;
+#X connect 3 0 0 0;
+#X connect 3 0 6 0;
+#X connect 4 0 1 0;
+#X connect 5 0 4 1;
+#X connect 7 0 2 1;
+#X connect 7 0 4 0;
+#X connect 7 0 9 1;
+#X connect 8 0 2 0;
+#X connect 9 0 3 0;
+#X connect 9 0 5 0;
+#X connect 10 0 8 1;
+#X connect 11 0 7 1;

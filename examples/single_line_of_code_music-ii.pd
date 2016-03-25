@@ -1,0 +1,58 @@
+#N canvas 56 22 939 508 10;
+#X msg 121 28 0;
+#X text 151 30 restart from 0;
+#X text -55 322 code here ->;
+#X obj 207 194 nbx 5 14 0 128 0 1 empty empty empty 0 -8 0 10 -262144
+-1 -1 12 256;
+#X obj 238 222 nbx 5 14 0 128 0 1 empty empty empty 0 -8 0 10 -262144
+-1 -1 8 256;
+#X obj 289 248 nbx 5 14 0 128 0 1 empty empty empty 0 -8 0 10 -262144
+-1 -1 63 256;
+#X obj 334 278 nbx 5 14 0 128 0 1 empty empty empty 0 -8 0 10 -262144
+-1 -1 4 256;
+#X text 256 177 parameters;
+#X text -108 -47 pd implementation of the method presented by 'viznut'
+on the countercomplex-blog.;
+#X obj 414 162 unpack f f f f;
+#X msg 433 74 12 8 63 4;
+#X msg 479 100 13 8 55 3;
+#X text 504 70 standard;
+#X obj 48 323 expr~ $v1 * (($v1>>$f2|$v1>>$f3)&$f4&$v1>>$f5);
+#X obj 34 405 dac~;
+#X obj 38 377 hip~ 10;
+#X obj 48 353 clip~ -1 1;
+#X obj 61 262 -~;
+#X obj 74 238 wrap~;
+#X obj 51 86 phasor~ 0.01;
+#X obj 52 120 *~ 8;
+#X obj 144 86 nbx 5 14 1 100 1 1 empty empty pitch/bitdepth?something...
+0 -8 0 10 -262144 -1 -1 17.1544 256;
+#X obj 51 147 *~ 1e+06;
+#X msg 515 132 31 40 59 14;
+#X msg 531 170 18 36 42 43;
+#X msg 545 204 69 46 52 43;
+#X connect 0 0 19 1;
+#X connect 3 0 13 1;
+#X connect 4 0 13 2;
+#X connect 5 0 13 3;
+#X connect 6 0 13 4;
+#X connect 9 0 3 0;
+#X connect 9 1 4 0;
+#X connect 9 2 5 0;
+#X connect 9 3 6 0;
+#X connect 10 0 9 0;
+#X connect 11 0 9 0;
+#X connect 13 0 16 0;
+#X connect 15 0 14 0;
+#X connect 15 0 14 1;
+#X connect 16 0 15 0;
+#X connect 17 0 13 0;
+#X connect 18 0 17 1;
+#X connect 19 0 20 0;
+#X connect 20 0 22 0;
+#X connect 21 0 20 1;
+#X connect 22 0 17 0;
+#X connect 22 0 18 0;
+#X connect 23 0 9 0;
+#X connect 24 0 9 0;
+#X connect 25 0 9 0;

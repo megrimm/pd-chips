@@ -1,0 +1,8 @@
+#N canvas 0 0 300 156 10;
+#X obj 245 133 dac~;
+#X obj 23 11 fexpr~ modf($y+0.00012) \; $y1[-2]-$y > 0.5 \; ($y3+$y2*7)%24
+\; pow(2 \, $y3/12+7)*6.2832/44100 \; (cos($y4)*$y5+sin($y4)*$y6)*0.9999+$y2*8
+\; (cos($y4)*$y6-sin($y4)*$y5)*0.9999 \; sin($y5) \; sin($y6);
+#X text 20 118 Copyright 2011 par Mathieu Bouchard;
+#X connect 1 6 0 0;
+#X connect 1 7 0 1;

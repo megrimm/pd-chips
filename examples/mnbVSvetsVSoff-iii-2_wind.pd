@@ -1,0 +1,15 @@
+#N canvas 487 248 415 248 10;
+#X obj 31 165 dac~;
+#X obj 31 64 samphold~;
+#X obj 31 130 osc~ 2;
+#X obj 30 91 expr~ exp((1+$v1)) * ($v2*400) * (1-$v2) * cos((1-$v2)
+* (70+(800*$v1)));
+#X obj 30 18 phasor~ 1.22;
+#X obj 82 40 phasor~ 7;
+#X connect 1 0 3 0;
+#X connect 2 0 0 0;
+#X connect 2 0 0 1;
+#X connect 3 0 2 0;
+#X connect 4 0 1 0;
+#X connect 5 0 1 1;
+#X connect 5 0 3 1;

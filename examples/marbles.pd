@@ -1,0 +1,38 @@
+#N canvas 1 53 843 370 10;
+#X obj 62 12 loadbang;
+#N canvas 0 0 450 300 (subpatch) 0;
+#X array losing-my-marbles 100 float 2;
+#X coords 0 30 100 0 200 140 1 0 0;
+#X restore 542 64 graph;
+#X obj 62 163 phasor~;
+#X obj 63 231 dac~;
+#X obj 417 97 t a;
+#X obj 219 12 moses 1;
+#X obj 62 207 expr~ $v1*$f2*0.2;
+#X obj 62 37 metro 75;
+#X obj 62 185 hip~ 5000;
+#X obj 541 312 tabwrite losing-my-marbles;
+#X text 625 213 Time;
+#X text 510 196 Here;
+#X text 510 56 Away;
+#X text 482 124 Distance;
+#X obj 62 62 expr if(pow($f2*0.01 \, $f3)*30<$f3/3 \, 0 \, pow($f2*0.01
+\, $f3)*30) \; if((pow($f2-1 \, $f3)*30)==0 \, 0 \, pow((30-pow($f2*0.01
+\, $f3)*30)/30 \, 4)) \; ($f2+1)%100 \; if($f3==0 \, random(2 \, 12)
+\, $f3);
+#X connect 0 0 7 0;
+#X connect 2 0 8 0;
+#X connect 4 0 14 2;
+#X connect 5 0 14 1;
+#X connect 5 0 14 2;
+#X connect 5 1 14 1;
+#X connect 6 0 3 0;
+#X connect 6 0 3 1;
+#X connect 7 0 14 0;
+#X connect 8 0 6 0;
+#X connect 14 0 2 0;
+#X connect 14 0 9 0;
+#X connect 14 1 6 1;
+#X connect 14 2 9 1;
+#X connect 14 2 5 0;
+#X connect 14 3 4 0;

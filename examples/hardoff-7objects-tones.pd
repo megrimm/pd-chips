@@ -1,0 +1,16 @@
+#N canvas 566 91 186 240 10;
+#X obj 29 171 dac~;
+#X obj 38 74 samphold~;
+#X obj 38 45 wrap~;
+#X obj 38 142 osc~;
+#X obj 89 -8 phasor~ 2;
+#X obj 38 22 *~ 400000;
+#X obj 39 116 *~ 500;
+#X connect 1 0 6 0;
+#X connect 2 0 1 0;
+#X connect 3 0 0 0;
+#X connect 3 0 0 1;
+#X connect 4 0 1 1;
+#X connect 4 0 5 0;
+#X connect 5 0 2 0;
+#X connect 6 0 3 0;
