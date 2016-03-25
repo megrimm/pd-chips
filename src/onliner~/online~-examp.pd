@@ -1,0 +1,67 @@
+#N canvas 354 85 585 572 10;
+#X obj -61 410 dac~;
+#X obj -58 113 rpole~ 1;
+#X msg -95 56 set 0;
+#X obj -58 141 expr~ int($v1);
+#X text 36 141 counter 2 int;
+#X text -49 55 reset counter;
+#X text -3 114 counter;
+#X text 34 87 increment for about 8 khz rate;
+#X text -159 3 pd implementation of viznuts and bemmus 'one line of
+code symphonies' presentetd on countercomplex.blogspot.com.;
+#X obj -55 382 *~ 0.5;
+#X obj -55 339 lop~ 4000;
+#X obj -54 361 lop~ 4000;
+#X obj -55 316 lop~ 4000;
+#X text 10 343 filter frequencies above 4 khz;
+#X text -138 193 code here ->;
+#X text 158 281 putchar \, conversion 2 unsigend char;
+#X obj -56 282 expr~ ((($v1&0xff)^0x80)-128)/128;
+#N canvas 0 22 804 802 formulas 0;
+#X text -60 -62 some nice formulas:;
+#X text -63 -40 expr~ $v1>>6&$v1&($v1*$v1>>14)+4095>>$v1;
+#X text -64 -24 expr~ $v1&($v1>>4)>>3&$v1>>7;
+#X text -63 -7 expr~ $v1&($v1>>7)|($v1>>4);
+#X text -63 11 expr~ $v1&696969*(sin($v1>>10));
+#X text -62 30 expr~ $v1<<(cos($v1&($v1>>7)))|($v1>>8)|($v1<<51|$v1<<32)
+;
+#X text -62 48 expr~ $v1>>4|$v1>>11&1234<<(($v1*1.5)>>($v1>>7));
+#X text -59 -78 expr~ $v1*(($v1>>12|$v1>>8)&63&$v1>>4);
+#X text 176 -79 default;
+#X text -26 68 $v1&$v1>>8;
+#X text -24 109 $v1*((($v1>>9)&10)|(($v1>>11)&24)^(($v1>>10)&15&($v1>>15)))
+;
+#X text -24 88 $v1|$v1>>9;
+#X text -26 134 ($v1*5&$v1>>7)|($v1*3&$v1>>10);
+#X text -25 161 (~$v1/100|($v1*3))^($v1*3&($v1>>5))&$v1;
+#X text -26 194 (($v1*$v1)>>((((8*$v1)&($v1>>$v1))>>((11>>$v1)&(8|8)))+((($v1+8)*(((($v1|11)*($v1+11))+(($v1&8)>>($v1+11)))*(((11>>8)|($v1|8))>>(($v1>>8)|(11&8)))))+(($v1>>11)-(8|11)))))
+;
+#X text -26 254 ((1-((($v1+10)>>(($v1>>9)&15))&2))*2)*(((($v1)>>10)^(($v1+20)>>10))&1)*32+((($v1&4095)-2047)*(($v1/(($v1>>10&3)+1))&(($v1>>10&7)+5))+($v1>>((($v1>>12)+16)&25)&1)*$v1%512*($v1%256-128)/2)/1024+128
+;
+#X text -27 335 ((1-((($v1+10)>>(($v1>>9)&(($v1>>14))))&($v1>>4&-2)))*2)*((($v1>>10)^(($v1+(($v1>>6)&127))>>10))&1)*32+128
+;
+#X text -23 401 $v1*$v1>>7*(sin($v1>>11)*123)&($v1&$v1>>7)|($v1%31337>>3)
+;
+#X text -22 440 $v1*($v1>>9|$v1>>13)&16;
+#X text -25 491 ($v1*(($v1>>9|$v1>>13)&15))&129;
+#X text -23 534 ($v1%31337>>3)|($v1|$v1>>7);
+#X text -23 566 ($v1&$v1>>7)*((1+$v1/4096)%2);
+#X text -19 600 ((($v1>>4)|($v1%10))+3.3)|((($v1%101)|($v1>>14))&(($v1>>7)|($v1*$v1%17)))
+;
+#X text -18 644 ((((($v1>>12)^($v1>>12)-2)%11*$v1)/4|$v1>>13)&127)
+;
+#X restore 100 491 pd formulas;
+#X obj -57 185 expr~ ((((($v1>>12)^($v1>>12)-2)%11*$v1)/4|$v1>>13)&127)
+;
+#X obj -59 85 sig~ 0.681405;
+#X connect 1 0 3 0;
+#X connect 2 0 1 0;
+#X connect 3 0 18 0;
+#X connect 9 0 0 0;
+#X connect 9 0 0 1;
+#X connect 10 0 11 0;
+#X connect 11 0 9 0;
+#X connect 12 0 10 0;
+#X connect 16 0 12 0;
+#X connect 18 0 16 0;
+#X connect 19 0 1 0;

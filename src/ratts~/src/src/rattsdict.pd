@@ -1,0 +1,12 @@
+#N canvas 17 186 343 218 10;
+#X text 73 3 rattsdict : dictionary for ratts~;
+#X text 70 24 Syntax: rattsdict NAME;
+#X text 56 56 Messages: See;
+#X text 56 40 Receives: NAME-dict;
+#X obj 46 113 inlet;
+#X obj 46 160 outlet;
+#X obj 46 137 rattshash \$1-dict 200000 autosize 0;
+#X obj 159 57 rattshash \$0-help 0;
+#X text 41 197 Bryan Jurish <moocow@ling.uni-potsdam.de>;
+#X connect 4 0 6 0;
+#X connect 6 0 5 0;

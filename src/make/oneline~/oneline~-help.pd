@@ -1,0 +1,28 @@
+#N canvas 374 243 470 383 10;
+#X obj 10 308 dac~;
+#X msg 158 46 \; pd dsp 1 \;;
+#X obj 9 74 rpole~ 1;
+#X floatatom 81 71 5 0 0 0 - - -;
+#X obj 10 279 *~ 0.5;
+#X obj 10 253 lop~ 4000;
+#X text 76 254 filter frequencies above 4 khz;
+#X text 221 230 putchar \, conversion 2 unsigend char;
+#X obj 10 230 expr~ ((($v1&0xff)^0x80)-128)/128;
+#X msg 291 48 bang;
+#X obj 275 113 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
+-1;
+#X obj 292 112 print;
+#X obj 291 80 hcs/folder_list;
+#X obj 9 46 sig~ 0.781405;
+#X obj 10 146 oneline_109~;
+#X connect 2 0 14 0;
+#X connect 3 0 2 1;
+#X connect 4 0 0 0;
+#X connect 4 0 0 1;
+#X connect 5 0 4 0;
+#X connect 8 0 5 0;
+#X connect 9 0 12 0;
+#X connect 12 0 10 0;
+#X connect 12 0 11 0;
+#X connect 13 0 2 0;
+#X connect 14 0 8 0;

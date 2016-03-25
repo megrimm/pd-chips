@@ -1,0 +1,3 @@
+phfeat.o phfeat.o: phfeat.c phfeat.h
+
+phfeat.h:

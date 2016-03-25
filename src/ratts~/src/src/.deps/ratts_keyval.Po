@@ -1,0 +1,8 @@
+ratts_keyval.o ratts_keyval.o: ratts_keyval.c ratts_keyval.h m_pd.h \
+  /usr/llvm-gcc-4.2/bin/../lib/gcc/i686-apple-darwin11/4.2.1/include/stddef.h
+
+ratts_keyval.h:
+
+m_pd.h:
+
+/usr/llvm-gcc-4.2/bin/../lib/gcc/i686-apple-darwin11/4.2.1/include/stddef.h:

@@ -1,0 +1,44 @@
+#N canvas 286 0 608 507 10;
+#X text 63 24 INLETS:;
+#X text 252 27 OUTLETS:;
+#X text 267 476 Bryan Jurish <moocow@ling.uni-potsdam.de>;
+#X text 54 427 SEE ALSO:;
+#X obj 67 447 ratts;
+#X obj 109 447 holmes;
+#X obj 54 291 holmes-mask;
+#X text 50 9 holmes-mask : feature-based element routing for holmes
+;
+#X text 268 40 1 - matched elements;
+#X text 267 53 2 - unmatched elements;
+#X text 81 38 1 - control messages;
+#X obj 159 447 holmes-features;
+#X text 196 97 "values FTR BOOL..." : set mask for feature FTR to BOOL"
+;
+#X msg 61 118 clear;
+#X text 287 120 "clear" : reset all vaues to zero;
+#X msg 72 139 invert;
+#X text 281 140 "invert" : invert all values;
+#X msg 77 163 print;
+#X text 288 164 "print" : dump mask to console;
+#X msg 83 206 R;
+#X text 302 207 "ELT" : match holmes-element name ELT;
+#X msg 83 228 symbol AA;
+#X msg 54 97 values vwl 1 stp 1;
+#X text 254 229 "symbol ELT" : like "ELT";
+#X msg 86 251 list T 6 0;
+#X text 206 250 "list ELT DUR STRS" : match holmes-element lists;
+#X obj 126 316 print not-matched;
+#X obj 54 345 print matched;
+#X text 257 317 2nd outlet passes through failed matches;
+#X text 259 347 1st outlet passes through good matches;
+#X text 51 383 NOTE: this should really be based on a more general
+mechanism for dealing with long (>= 24-bit) bitmasks...;
+#X connect 6 0 27 0;
+#X connect 6 1 26 0;
+#X connect 13 0 6 0;
+#X connect 15 0 6 0;
+#X connect 17 0 6 0;
+#X connect 19 0 6 0;
+#X connect 21 0 6 0;
+#X connect 22 0 6 0;
+#X connect 24 0 6 0;

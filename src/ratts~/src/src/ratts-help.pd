@@ -1,0 +1,35 @@
+#N canvas 325 41 501 531 10;
+#X text 181 500 Bryan Jurish <moocow@ling.uni-potsdam.de>;
+#X text 23 39 EXTERNALS:;
+#X obj 116 271 klatt~;
+#X text 174 273 Klatt cascade-parallel formant synthesizer;
+#X obj 115 246 holmes;
+#X text 138 300 ... more to come;
+#X text 38 3 ratts : Realtime Analog Text-To-Speech external library
+;
+#X obj 68 220 phones2holmes;
+#X text 174 246 convert phonetic elements to Klatt frames;
+#X text 174 220 convert phone-strings to Holmes elements;
+#X obj 81 194 guessphones;
+#X obj 80 141 number2text;
+#X text 170 142 convert numbers to english text;
+#X text 173 194 guess phone-strings from english text (NRL);
+#X obj 94 114 rattshash;
+#X text 170 114 (auto-)resizable hash table;
+#X obj 108 87 toupper;
+#X text 172 89 symbol case normalizers;
+#X obj 50 87 tolower;
+#X obj 103 63 rattstok;
+#X text 174 64 raw text tokenizer;
+#X text 36 333 ABSTRACTIONS:;
+#X text 168 353 full text-to-speech abstraction;
+#X text 169 377 shareable dictionary using rattshash;
+#X obj 77 353 ratts~ help;
+#X obj 57 377 rattsdict help;
+#X text 36 425 ACKNOWLEDGEMENTS:;
+#X obj 101 167 spellout;
+#X text 173 168 convert Pd messages to character names;
+#X text 46 441 The ratts externals are built on code by Nick Ing-Simmons
+\, Jon Iles \, Orm Finnendahl \, and Travis Newhouse \, and based on
+work by D.H. Klatt \, L.C. Klatt \, J.N. Holmes \, I. Mattingly \,
+and J. Shearme.;

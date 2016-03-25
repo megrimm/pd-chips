@@ -1,0 +1,224 @@
+#N canvas 265 22 1161 848 10;
+#X text 28 3 space~ - A module for spatialization of audio sources
+;
+#X text 29 43 Based on an algorithm and a partial implementaion by
+;
+#X text 32 134 With the help of Ted Apel \, Anthony Burr \, Harry Castle
+\,;
+#X text 31 149 and Miller Puckette.;
+#X text 32 57 F. Richard Moore in "cmusic" as part of the Computer
+Audio Research Laboratory (CARL) package.;
+#X text 33 230 Space~ is a real-time implementation of a general model
+for spatialization of audio sources. The central conceit of the algorithm
+is that of a room within a room.;
+#X text 820 6 updated for Pd 0.37 and space~ 0.4alpha;
+#X text 403 734 2 - Front Right;
+#X text 403 713 1 - Front Left;
+#X text 403 692 Outputs for stereo;
+#X text 403 755 3 - to be connected to Reverb;
+#X text 403 703 -------------------;
+#X text 405 833 2 - Front Right;
+#X text 405 812 1 - Front Left;
+#X text 405 802 -------------------;
+#X text 405 791 Outputs for quad;
+#X text 405 854 3 - Rear Left;
+#X text 405 875 4 - Rear Right;
+#X text 405 896 5 - to be connected to Reverb;
+#X text 22 692 inputs;
+#X text 22 713 --------;
+#X text 22 734 1 - audio source;
+#X text 22 755 2 - X coordinate in meters;
+#X text 22 776 3 - Y coordinate in meters;
+#X text 22 797 4 - amplitude (not in db);
+#X floatatom 825 95 5 0 0 0 - - -;
+#X obj 825 116 dbtorms;
+#X obj 682 149 noise~;
+#X obj 730 139 line~;
+#X text 37 662 All inlets and outlets of space~ are of type signal
+;
+#X msg 730 115 \$1 10;
+#X floatatom 731 94 5 0 0 0 - - -;
+#X obj 778 139 line~;
+#X msg 778 115 \$1 10;
+#X floatatom 778 94 5 0 0 0 - - -;
+#X obj 693 274 vu 15 80 empty empty -1 -8 0 7 -66577 -1 1 0;
+#X text 593 148 Input signal;
+#X text 731 58 X and Y Cord.;
+#X text 737 72 in meters;
+#X text 825 73 Vol in db;
+#X obj 692 224 env~;
+#X obj 692 248 - 100;
+#X obj 814 274 vu 15 80 empty empty -1 -8 0 7 -66577 -1 1 0;
+#X obj 813 224 env~;
+#X obj 813 248 - 100;
+#X obj 693 414 vu 15 80 empty empty -1 -8 0 7 -66577 -1 1 0;
+#X obj 692 364 env~;
+#X obj 692 388 - 100;
+#X obj 819 412 vu 15 80 empty empty -1 -8 0 7 -66577 -1 1 0;
+#X obj 818 362 env~;
+#X obj 818 386 - 100;
+#X text 612 270 Front left;
+#X text 857 270 Front right;
+#X floatatom 845 547 5 0 0 0 - - -;
+#X obj 845 568 dbtorms;
+#X obj 697 619 noise~;
+#X obj 743 598 line~;
+#X msg 743 574 \$1 10;
+#X floatatom 743 553 5 0 0 0 - - -;
+#X obj 788 599 line~;
+#X msg 788 575 \$1 10;
+#X floatatom 788 554 5 0 0 0 - - -;
+#X obj 712 719 vu 15 80 empty empty -1 -8 0 7 -66577 -1 1 0;
+#X text 609 619 Input signal;
+#X text 743 516 X and Y Cord.;
+#X text 749 531 in meters;
+#X text 845 525 Vol in db;
+#X obj 711 669 env~;
+#X obj 711 693 - 100;
+#X obj 793 720 vu 15 80 empty empty -1 -8 0 7 -66577 -1 1 0;
+#X obj 792 670 env~;
+#X obj 792 694 - 100;
+#X floatatom 840 621 5 0 0 0 - - -;
+#X text 835 604 Theta;
+#X floatatom 880 621 5 0 0 0 - - -;
+#X text 23 831 ADDITIONAL inputs when "card" is specified;
+#X text 19 845 ------------------------------------------;
+#X text 27 463 The syntax to space~ is a follows:;
+#X text 27 484 space~ [card] [stereo|quad] [inner room size];
+#X text 27 505 - card - indicates that the cardiod pattern information
+is supplied for the audio source;
+#X text 27 571 - inner room size - is the size of the inner room in
+meters;
+#X text 27 592 - outer room size - is the size of the outer room in
+meters;
+#X text 27 538 - stereo|quad - specifies the diffusion mode (quad is
+the default);
+#X text 35 613 When inner room size and outer room size are not specified
+\, sizes 4 and 50 meters are assumed.;
+#N canvas 0 22 510 319 methods 0;
+#X text 38 19 Methods;
+#X text 38 28 -------;
+#X text 41 41 Stop - stop spatial processing (for saving cpu cycles
+;
+#X text 41 59 start - start processing;
+#X text 40 80 theta - the value of theta (when "card" is not specified)
+;
+#X text 40 102 back - the value of back;
+#X text 38 209 direct - affecting the power laws for calculating the
+direct ray attenuation;
+#X text 39 240 reflect - affecting the power laws for calculating the
+reflected ray attenuation;
+#X text 38 19 Methods;
+#X text 38 28 -------;
+#X text 40 128 TH (also "th" or "threshold") - threshold value for
+ray diffraction simulation;
+#X text 39 163 CF (also "cf" or "crsossfade") - crossfade form for
+ray diffraction simulation;
+#X restore 44 930 pd methods;
+#X text 32 201 http://www.crca.ucsd.edu/publications/YadegariICMC2002.pdf
+;
+#X msg 488 20 \; pd dsp 1 \;;
+#X text 560 27 <-- Make sure audio is turned on;
+#X text 619 407 Rear Left;
+#X text 864 407 Rear Right;
+#X text 29 16 Released under GNU's GPL License;
+#X text 33 275 The inner room is the space delimited by the speakers
+which contains the listeners. The model simulates the behavior of the
+sound source within a user-defined virtual outer room \, as heard from
+the inner room. The speakers act as "windows" throug which sound from
+the outer room passes.;
+#X text 880 604 Back;
+#X text 19 862 5 - Theta (in radians) - source radiation direction
+;
+#X text 20 877 6 - Back - radiation level in the opposite direction
+;
+#X text 47 891 0 <= Back <= 1;
+#X text 32 176 For more info refer to: http://www.crca.ucsd.edu/~yadegari/space.html
+;
+#X obj 1003 319 vu 15 80 empty empty -1 -8 0 7 -66577 -1 1 0;
+#X obj 1002 269 env~;
+#X obj 1002 293 - 100;
+#X obj 875 721 vu 15 80 empty empty -1 -8 0 7 -66577 -1 1 0;
+#X obj 874 671 env~;
+#X obj 874 695 - 100;
+#X text 709 808 left;
+#X text 789 812 right;
+#X text 873 811 reverb;
+#X obj 750 667 dac~;
+#X text 926 611 If you want an omidirectional;
+#X text 928 625 source \, set "back" to 1;
+#X obj 588 226 dac~ 1 2 3 4;
+#X text 867 95 <- bring up slowly (100 = 1 RMS);
+#X text 896 547 <- bring up slowly (100 = 1 RMS);
+#X text 516 62 In this example you have to;
+#X text 517 74 set X and Y coordinates;
+#X text 518 88 to "> 2" or "< -2" to;
+#X text 519 101 locate the source outside of;
+#X text 519 115 the listening space;
+#X text 989 239 to be connected;
+#X text 1031 251 to reverb;
+#X text 638 284 (1);
+#X text 886 283 (2);
+#X text 639 421 (3);
+#X text 883 421 (4);
+#X text 29 94 Real-time implementation \, port to Pd and new improvments
+by Shahrokh Yadegari (sdy@ucsd.edu);
+#X text 348 484 [outer room size];
+#X text 32 353 NOTE: In this implementation both the inner and outer
+rooms are assumed to be squares. Also keep in mind that the simulation
+of a source in the listening room is not as convincing as when the
+source is in the virtual space. Currently one hears sudden changes
+to the level of audio on opposite speakers when a sources passes through
+an inner wall.;
+#X obj 711 643 spaces~ card stereo 4 100;
+#X obj 692 173 spaces~ quad 4 100;
+#X connect 25 0 26 0;
+#X connect 26 0 127 3;
+#X connect 27 0 127 0;
+#X connect 28 0 127 1;
+#X connect 30 0 28 0;
+#X connect 31 0 30 0;
+#X connect 32 0 127 2;
+#X connect 33 0 32 0;
+#X connect 34 0 33 0;
+#X connect 40 0 41 0;
+#X connect 41 0 35 0;
+#X connect 43 0 44 0;
+#X connect 44 0 42 0;
+#X connect 46 0 47 0;
+#X connect 47 0 45 0;
+#X connect 49 0 50 0;
+#X connect 50 0 48 0;
+#X connect 53 0 54 0;
+#X connect 54 0 126 3;
+#X connect 55 0 126 0;
+#X connect 56 0 126 1;
+#X connect 57 0 56 0;
+#X connect 58 0 57 0;
+#X connect 59 0 126 2;
+#X connect 60 0 59 0;
+#X connect 61 0 60 0;
+#X connect 67 0 68 0;
+#X connect 68 0 62 0;
+#X connect 70 0 71 0;
+#X connect 71 0 69 0;
+#X connect 72 0 126 4;
+#X connect 74 0 126 5;
+#X connect 98 0 99 0;
+#X connect 99 0 97 0;
+#X connect 101 0 102 0;
+#X connect 102 0 100 0;
+#X connect 126 0 67 0;
+#X connect 126 0 106 0;
+#X connect 126 1 70 0;
+#X connect 126 1 106 1;
+#X connect 126 2 101 0;
+#X connect 127 0 40 0;
+#X connect 127 0 109 0;
+#X connect 127 1 43 0;
+#X connect 127 1 109 1;
+#X connect 127 2 46 0;
+#X connect 127 2 109 2;
+#X connect 127 3 49 0;
+#X connect 127 3 109 3;
+#X connect 127 4 98 0;

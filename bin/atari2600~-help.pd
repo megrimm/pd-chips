@@ -1,0 +1,122 @@
+#N canvas 635 30 671 508 10;
+#X obj 60 331 *~ 0.5;
+#X floatatom 109 333 0 0 0 0 - - -;
+#X obj 60 356 *~ 0.01;
+#X obj 60 400 dac~;
+#N canvas 762 132 467 523 Another_example 0;
+#X obj 48 473 dac~;
+#X obj 209 282 / 8;
+#X obj 303 282 / 8;
+#X obj 245 282 - 53;
+#X obj 151 283 - 53;
+#X obj 245 254 unpack 0 0;
+#X obj 151 253 unpack 0 0;
+#X obj 151 137 notein;
+#X obj 151 217 route 1 2;
+#X obj 151 192 pack 0 0 0;
+#X obj 151 167 poly 2;
+#X obj 361 293 / 4;
+#X obj 79 293 / 4;
+#X obj 360 269 route 11;
+#X obj 334 243 midiparse;
+#X obj 334 217 midiin;
+#X obj 79 269 route 10;
+#X obj 53 243 midiparse;
+#X obj 53 217 midiin;
+#X msg 11 23 Atari 2600/7800 (TIA) Sound Manipulator;
+#X text 11 42 Please play me at 32kHz.;
+#X obj 302 325 knob 32 32 0 127 0 0 empty empty empty 0 -8 0 8 -262144
+-1 -1 0 1;
+#X obj 257 326 knob 32 32 0 127 0 0 empty empty empty 0 -8 0 8 -262144
+-1 -1 0 1;
+#X obj 211 325 knob 32 32 0 127 0 0 empty empty empty 0 -8 0 8 -262144
+-1 -1 171 1;
+#X obj 167 325 knob 32 32 0 127 0 0 empty empty empty 0 -8 0 8 -262144
+-1 -1 0 1;
+#X obj 122 326 knob 32 32 0 127 0 0 empty empty empty 0 -8 0 8 -262144
+-1 -1 0 1;
+#X obj 76 325 knob 32 32 0 127 0 0 empty empty empty 0 -8 0 8 -262144
+-1 -1 171 1;
+#X obj 207 136 makenote 3.2 500;
+#X msg 207 106 60;
+#X floatatom 192 86 5 0 0 0 - - -;
+#X obj 49 429 *~ 0.2;
+#X obj 49 380 atari2600~;
+#X connect 2 0 21 0;
+#X connect 3 0 23 0;
+#X connect 4 0 26 0;
+#X connect 5 0 3 0;
+#X connect 5 1 2 0;
+#X connect 6 0 4 0;
+#X connect 6 1 1 0;
+#X connect 7 0 10 0;
+#X connect 7 1 10 1;
+#X connect 8 0 6 0;
+#X connect 8 1 5 0;
+#X connect 9 0 8 0;
+#X connect 10 0 9 0;
+#X connect 10 1 9 1;
+#X connect 10 2 9 2;
+#X connect 11 0 22 0;
+#X connect 12 0 25 0;
+#X connect 13 0 11 0;
+#X connect 14 2 13 0;
+#X connect 15 0 14 0;
+#X connect 16 0 12 0;
+#X connect 17 2 16 0;
+#X connect 18 0 17 0;
+#X connect 21 0 31 6;
+#X connect 22 0 31 5;
+#X connect 23 0 31 4;
+#X connect 24 0 31 3;
+#X connect 25 0 31 2;
+#X connect 26 0 31 1;
+#X connect 27 0 10 0;
+#X connect 27 1 10 1;
+#X connect 28 0 27 0;
+#X connect 29 0 27 0;
+#X connect 30 0 0 0;
+#X connect 30 0 0 1;
+#X connect 31 0 30 0;
+#X restore 375 368 pd Another_example;
+#X msg 11 23 Atari 2600 Controller/Looping Utility;
+#X text 269 52 Usage:;
+#X text 275 70 The atari2600~ external emulates both sound channels
+of the TIA. There are three components to each channel: Tone \, Frequency
+divisor \, and Volume. The "manipulator" subpatch allows you to manipulate
+these channel components. 1 Choose a "rate" (playback speed \, CC13)
+and "length" (segment length \, CC14) for playback. Selection of these
+values will size the tables inside the "manipulator" subpatch accordingly.
+2 Hit "Run". The corresponding segment of data will be looped. 3 Midi
+CC values 11 and 12 allow the user to change the playback direction
+and position. See the "controller" subpatch for details. 4 The "Manual"
+button will stop playback. The user can then use Midi CC 10 to manually
+control playback position. 5 For proper atari2600 emulation \, please
+use a sampling rate of 32kHz.;
+#X obj 60 301 atari2600~;
+#X floatatom 96 97 5 0 15 0 - - -;
+#X floatatom 115 130 5 0 31 0 - - -;
+#X floatatom 144 167 5 0 15 0 - - -;
+#X floatatom 149 226 5 0 15 0 - - -;
+#X floatatom 182 258 5 0 31 0 - - -;
+#X floatatom 213 296 5 0 15 0 - - -;
+#X text 253 297 volume;
+#X text 180 167 volume;
+#X text 217 258 note;
+#X text 133 97 tone;
+#X floatatom 206 118 5 0 0 0 - - -;
+#X text 149 129 frequency;
+#X text 185 226 frequency;
+#X connect 0 0 2 0;
+#X connect 1 0 2 1;
+#X connect 2 0 3 0;
+#X connect 2 0 3 1;
+#X connect 8 0 0 0;
+#X connect 9 0 8 1;
+#X connect 10 0 8 2;
+#X connect 11 0 8 3;
+#X connect 12 0 8 4;
+#X connect 13 0 8 5;
+#X connect 14 0 8 6;
+#X connect 19 0 13 0;
+#X connect 19 0 10 0;

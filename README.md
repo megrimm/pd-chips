@@ -1,0 +1,1 @@
+this is a really big mess of everything I have collected to create chiptune music in puredata. it is fairly unorganized. some of it builds. some of it does not. the idea was to have a library called “chips~” for pd-extended (when that was a thing) but never was completed. if your are interested in continuing please fork at will and I will pull your changes.

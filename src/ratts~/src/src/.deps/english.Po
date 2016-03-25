@@ -1,0 +1,3 @@
+english.o english.o: english.c config.h
+
+config.h:

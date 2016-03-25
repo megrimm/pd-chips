@@ -1,0 +1,9 @@
+#N canvas 124 180 200 200 10;
+#N canvas 494 227 420 300 META 1;
+#X text 10 10 META this is a prototype of a libdir meta file;
+#X text 10 50 AUTHOR Numerous;
+#X text 10 97 LICENSE GNU GPL;
+#X text 10 30 NAME chip;
+#X text 9 67 DESCRIPTION This is a collection of chiptune externals
+;
+#X restore 10 10 pd META;

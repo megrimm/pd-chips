@@ -1,0 +1,45 @@
+#N canvas 577 42 333 486 10;
+#X obj 6 330 *~ 0.5;
+#X floatatom 55 332 0 0 0 0 - - -;
+#X obj 6 399 dac~;
+#X obj 6 300 atari2600~;
+#X floatatom 15 96 5 0 15 1 Tone - -;
+#X floatatom 25 121 5 0 31 1 Frequency - -;
+#X floatatom 34 145 5 0 15 1 Volume - -;
+#X floatatom 44 190 5 0 15 1 Tone - -;
+#X floatatom 53 213 5 0 31 1 Frequency - -;
+#X floatatom 63 236 5 0 15 1 Volume - -;
+#N canvas 290 327 397 305 info 0;
+#X text 19 17 Usage:;
+#X text 18 37 The TIA provides two channels of one-bit sound. Each
+channel provides for 32 pitch values and 16 possible bit sequences.
+There is a 4 bit volume control. There are three components to each
+channel: Tone \, Frequency divisor \, and Volume. The "manipulator"
+subpatch allows you to manipulate these channel components. 1 Choose
+a "rate" (playback speed \, CC13) and "length" (segment length \, CC14)
+for playback. Selection of these values will size the tables inside
+the "manipulator" subpatch accordingly. 2 Hit "Run". The corresponding
+segment of data will be looped. 3 Midi CC values 11 and 12 allow the
+user to change the playback direction and position. See the "controller"
+subpatch for details. 4 The "Manual" button will stop playback. The
+user can then use Midi CC 10 to manually control playback position.
+5 For proper atari2600 emulation \, please use a sampling rate of 32kHz.
+;
+#X restore 137 397 pd info;
+#X text -16 29 ATARI2600~ "TIA" (Television Interface Adaptor) Sound
+Emulator;
+#X obj 137 370 pddp/dsp;
+#X msg -18 -19 Atari 2600/7800 (TIA) Sound Manipulator;
+#X text -18 0 Please play me at 32kHz.;
+#X obj 6 355 *~ 0.5;
+#X connect 0 0 15 0;
+#X connect 1 0 15 1;
+#X connect 3 0 0 0;
+#X connect 4 0 3 1;
+#X connect 5 0 3 2;
+#X connect 6 0 3 3;
+#X connect 7 0 3 4;
+#X connect 8 0 3 5;
+#X connect 9 0 3 6;
+#X connect 15 0 2 0;
+#X connect 15 0 2 1;
