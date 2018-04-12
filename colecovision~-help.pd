@@ -1,0 +1,55 @@
+#N canvas 663 426 557 450 10;
+#X obj 174 414 dac~;
+#X floatatom 188 171 5 0 0 0 - - -, f 5;
+#X floatatom 338 312 5 0 0 0 - - -, f 5;
+#X floatatom 217 192 5 0 0 0 - - -, f 5;
+#X floatatom 379 318 5 0 0 0 - - -, f 5;
+#X floatatom 260 238 5 0 0 0 - - -, f 5;
+#X floatatom 240 217 5 0 0 0 - - -, f 5;
+#X floatatom 284 260 5 0 0 0 - - -, f 5;
+#X floatatom 300 281 5 0 0 0 - - -, f 5;
+#X text 40 42 The Texas Instruments SN76489 Digital Complex Sound Generator
+(DCSG);
+#N canvas 0 23 450 300 info 0;
+#X text 42 20 The SN76489 Digital Complex Sound Generator (DCSG) is
+a TTL-compatible Programmable Sound Generator chip from Texas Instruments.
+It contains three square wave tone generators and one white noise generator
+\, each of which can produce sounds at various frequencies and sixteen
+different volume levels.[1] Its main application has been the generation
+of music and sound effects in game consoles \, arcade games and home
+computers (such as the BBC Micro and the IBM PCjr) \, existing alongside
+the competing and similar General Instrument AY-3-8910. The frequency
+of the square waves produced at each channel is derived by two factors:
+the speed of the external clock and a value provided in a control register
+for that channel (called N). Each channel's frequency is arrived at
+by dividing the clock by 32 and then dividing the result by N.;
+#X restore 376 72 pd info;
+#X obj 171 367 colecovision~ 0 0 0 0 0 0, f 37;
+#X obj 195 341 / 2;
+#X obj 219 341 / 8;
+#X obj 243 341 / 2;
+#X obj 267 341 / 8;
+#X obj 291 341 / 2;
+#X obj 315 341 / 8;
+#X obj 339 341 / 2;
+#X obj 365 341 / 8;
+#X text 37 114 play me at 22050hz with signal IO vector sizes of 256
+;
+#X connect 1 0 12 0;
+#X connect 2 0 18 0;
+#X connect 3 0 13 0;
+#X connect 4 0 19 0;
+#X connect 5 0 15 0;
+#X connect 6 0 14 0;
+#X connect 7 0 16 0;
+#X connect 8 0 17 0;
+#X connect 11 0 0 0;
+#X connect 11 1 0 1;
+#X connect 12 0 11 1;
+#X connect 13 0 11 2;
+#X connect 14 0 11 3;
+#X connect 15 0 11 4;
+#X connect 16 0 11 5;
+#X connect 17 0 11 6;
+#X connect 18 0 11 7;
+#X connect 19 0 11 8;
