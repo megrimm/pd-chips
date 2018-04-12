@@ -1,0 +1,11 @@
+# Makefile for mylib
+# make clean && make -f Makefile.pdlibbuilder LDFLAGS="-arch x86_64" && /Applications/Pd.app/Contents/Resources/bin/pd -open ~/Development/puredata/pd-recog/recog~-help.pd
+
+lib.name = chips~
+
+class.sources = atari2600~.c
+
+datafiles = atari2600~-help.pd
+
+PDLIBBUILDER_DIR=pd-lib-builder/
+include $(PDLIBBUILDER_DIR)/Makefile.pdlibbuilder
