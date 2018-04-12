@@ -1,0 +1,6 @@
+;jit.atari2600.def
+
+LIBRARY	jit.atari2600
+
+EXPORTS
+	main

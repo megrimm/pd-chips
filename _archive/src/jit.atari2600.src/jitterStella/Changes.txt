@@ -1,0 +1,452 @@
+===============================================================================
+
+     SSSS    tt          lll  lll
+    SS  SS   tt           ll   ll
+    SS     tttttt  eeee   ll   ll   aaaa
+     SSSS    tt   ee  ee  ll   ll      aa
+        SS   tt   eeeeee  ll   ll   aaaaa  --  "An Atari 2600 VCS Emulator"
+    SS  SS   tt   ee      ll   ll  aa  aa
+     SSSS     ttt  eeeee llll llll  aaaaa
+
+===============================================================================
+                               Release History
+===============================================================================
+
+1.4 to 1.4.1: (August 15, 2004)
+
+  * Fixed PAL sound issues.  PAL games now should sound correct (no distortion
+    or missing sounds), but some games may still run too fast.  This is still
+    a work-in-progress, and will be fixed in Stella 1.5.
+
+  * Cleaned up the SDL event gathering loop.  This should hopefully fix the
+    problems with "double-pumping events" reported by some Windows users.
+    Event gathering and dispatching is now much faster as well.
+
+  * Fixed a bug where the Control or Alt keys could be assigned to some event,
+    but they could never be used.  Control/Alt can now be used for any event.
+
+  * Updated stella.pro file to work with the latest Good2600 ROMset release
+    (Thanks go to Voch for helping to maintain the stella.pro file).
+
+  * For the Windows port; removed requirement for ROM files to be named *.bin
+    in the StellaX frontend.  The ROM's can now have any name, but ZIP-files are
+    not yet supported.
+
+  * For the Windows port; fixed the problems with the included modified SDL
+    library and Windows 98 users.  Stella should now run in Windows 98.
+
+  * For the OSX port; added preference to allow user to select the directory
+    in which ROM images are stored.  This sets the default directory to start
+    the browsing for a ROM in, and doesn't preclude the user from selecting a 
+    file outside that directory.
+
+  * For the OSX port; fixed preferences bug where Preferences changed before
+    a game was opened were not being saved.
+
+1.3 to 1.4: (July 17, 2004)
+
+  * Codebase ported to SDL. The DOS and X11 ports have been discontinued.
+
+  * Sound code ported to SDL. For the Linux versions, ALSA and OSS sound
+    support has been discontinued.
+
+  * The Linux, MacOSX and Windows ports are now based on the same codebase
+    and are actively maintained. That means simultaneous (and hopefully more
+    frequent) releases.
+
+  * A new Windows port has been created, with the GUI based on StellaX.
+    This is the first new release for Windows since Stella 1.2.
+    (software  mode is not yet optimized; OpenGL mode works much better)
+
+  * A new Mac OSX port has been created by Mark Grebe. This is the first new
+    release for Mac OSX since Stella 1.2.
+
+  * Added OpenGL rendering support.
+
+  * Added more refined in-game GUI.
+
+  * Added event remapping. Emulation keys can now be remapped to the keyboard
+    or up to 4 joysticks.
+
+  * Added native Stelladaptor support. Joysticks, paddles, and driving
+    controllers have been tested.
+
+  * Digital sound support (used in games like Quadrun and Pitfall2) has been
+    greatly improved. Sound generation is now more tightly synchronized with
+    video updates.
+
+  * Added support for switchable palettes. Currently you can switch between
+    the current Stella palette, original Stella palette (pre-1.2 versions),
+    and the z26 palette.
+
+  * Added support for UA Limited style bankswitching (Funky Fish and Pleiades).
+
+  * Switched to using high compatibility M6502 mode by default. This means
+    old state saves from previous Stella versions will no longer work.
+
+  * The meaning of the "-sound" command line option has been changed. This
+    option now accepts either 'true' or 'false (1 or 0) to enable/disable
+    sound.
+
+  * Changed sound mixer functionality. The system volume/mixer settings will
+    never be changed; volume changes in Stella will only affect the
+    emulation itself.
+
+  * Added "-video" command line option. This option accepts either 'soft' or
+    'gl', to use software/OpenGL rendering.
+
+  * Added "-gl_filter" command line option. This option accepts either
+    'nearest' or 'linear', to use GL_NEAREST or GL_LINEAR filtering.
+
+  * Added "-gl_aspect" command line option. This option accepts a decimal
+    value specifying how much to scale the width of the emulation image
+    (useful for giving an authentic 'square-looking' 4:3 mode).
+
+  * Added "-gl_fsmax" command line option. This option accepts either
+    'true' or 'false, and specifies to use the maximum possible resolution
+    when in fullscreen OpenGL mode (useful for Linux and for Windows on
+    laptops).
+
+  * Added "-fragsize" command line option. This option accepts the size to
+    use for sound fragments. Linux/MacOSX works well with 512, Windows seems
+    to need 2048. This value must be a power of two.
+
+  * Modified "-volume" command line option. If you specify '-1', Stella will
+    use the system volume.
+
+  * Renamed the "-pro" command line option to "-altpro".
+
+  * Renamed the "-fps" command line option to "-framerate".
+
+  * Removed the "-center" command line option. Stella now automatically
+    centers the window when possible.
+
+  * Removed the "-paddle real" command line option, since it never really
+    worked correctly (and Stelladaptor support adds that functionality
+    anyway).
+
+  * Removed all command line options relating to the X11 port
+    (owncmap, display).
+
+1.2 to 1.3: (February 17, 2003)
+
+  * Improved TIA sound system so that games with digitized audio work
+
+  * Added saving and loading of game state to the core; X11, SDL, and DOS
+    versions current support saving and loading game state
+
+  * Added support for F4 bankswitching method
+
+  * Pitfall II DPC sound emulation completed
+
+  * Fixed a bug which caused the difficulty switches to operate backwards
+
+  * Changed DPC auto-detection to use file size so that Pitfall II mods work
+
+  * Modified RIOT timer emulation so that startup values are random
+
+  * Added 3F bankswitching auto-detection routine so that homebrews and
+    demos work without a stella.pro entry
+
+  * Updated the TIA message boxes so they look a little nicer 
+
+  * Latest stella.pro file included in distribution
+
+  * Added some developer options to the core, and the ability to change game
+    width, height, xstart, ystart, and others while the emulation is running.
+    Added ability to switch between NTSC and PAL at runtime, and the ability
+    to save the current properties to a file or to merge the changes into the
+    stella.pro file; X11 and SDL versions supported for now (compile option)
+
+  * External sound server for the X11 and SDL versions no longer required, as
+    all sound code is now integrated into the core 
+
+  * Changed locations of the user's config files for the X11 and SDL versions;
+    the user's stellarc file is now located in $HOME/.stella/stellarc, state
+    files are located in $HOME/.stella/state/ and the stella.pro file is
+    located in $HOME/.stella/stella.pro
+
+  * Changed the way options are supplied on the commandline for the X11 and
+    SDL versions. Now all commandline options take exactly the same arguments
+    as in the INI file.
+
+  * Added "-accurate" command line option to choose between accurate
+    (CPU-intensive) timing or less accurate (CPU-friendly) timing to X11
+    and SDL versions. This is the final version of what was considered
+    experimental timing code in Stella 1.2.
+
+  * Added "-sound" command line option to choose which sound backend to
+    use (alsa, oss, sdl) with the X11 and SDL versions.
+
+  * Added the developer command line options to the X11 and SDL versions,
+    which are only activated in developer builds: -Dformat, -Dwidth,
+    -Dheight, -Dxstart, -Dystart, -Dmerge 
+
+  * Fixed window resize bug in the X11 port
+
+  * Added "-nosound" command line option to the DOS port to disable audio
+
+  * DOS port supports a "-vsync" option to synchronize emulation with the
+    video blank of the video card
+
+  * Changed VGA code in the DOS port to use a 60Hz 320x200 and a 60Hz
+    320x240 graphics mode
+
+  * DOS port has been updated to run better under Windows NT, 2000, and XP.
+    There are still issues with the sound, however, it is usable.
+
+  * DOS port is using a new Sound Blaster driver created by Matt Conte which
+    supports auto-detection of sound cards.
+
+  * DOS port supports a STELLA_HOME environment variable that defines 
+    the location of config files.
+ 
+  * In the DOS port the stella.pro file is searched for first in the
+    current working director and then in the $STELLA_HOME directory
+
+  * In the DOS port the ROM image is searched for first using the
+    specified path, then in $STELLA_HOME/ROMS, and finally in $STELLA_HOME
+  
+Cyberstella 1.2.1 (May 16, 2002)
+
+  * Removed the built-in games until some legal stuff is sorted out
+
+Cyberstella 1.2 (May 10, 2002)
+
+  * Initial release of a new WIN 32 port of Stella
+
+DOS 1.2 to DOS 1.2.1: (April 28, 2002)
+
+  * Fixed a bug with control keys being confused with the pause key
+
+  * Fixed a bug with the pause key causing the application to lockup
+
+1.1 to 1.2: (April 21, 2002)
+
+  * Improved illegal CPU instruction support. Thrust and Qb will now operate
+    correctly.
+
+  * Improved emulation of undefined TIA reads. The ball in Video Pinball
+    finally bounces off of the paddles!
+
+  * More accurate NTSC and PAL palettes. These palettes should be much more
+    like the colors displayed on a real TV.
+
+  * PAL color loss is now emulated. If a PAL game displays an odd number
+    of scanlines then the next frame will be displayed in black & white.
+
+  * TIA emulation improved to fix some problems with Pole Position,
+    Fatal Run, Dolphin, Decathlon, Robot Tank, and Hole Hunter.
+
+  * Support for Pitfall II has been added, however, the enhanced sound
+    provided by the DPC chip found in the Pitfall II cartridge isn't
+    currently emulated.
+
+  * Support added for the Commavid (CV) bankswitching method.
+
+  * Support added for the Megaboy cartridge.
+
+  * Improved Supercharger emulation including a new BIOS that shows the
+    vertical blue progress bars like the real thing.
+
+  * Code for the emulation core has been updated to work with newer C++
+    compilers compliant with the C++ standard.
+
+  * Basic message support added to the TIA emulation. This allows a short
+    message to overlay the TIA frame. Currently, it's used when switching
+    color modes and difficulty settings.
+ 
+  * The internal data structure for the stella.pro file was changed from
+    a resizable array to a binary search tree. This results in quicker
+    startup times.
+
+  * An SDL port of Stella is available (requires SDL 1.2.0 or greater)
+
+  * Added option to not load in the whole stella.pro file when starting 
+    Stella. This option is enabled on the X11, SDL, and DOS versions. Win32 
+    version is left alone since it's needed for loading multiple games from 
+    the UI. Saves on memory usage.
+
+  * Added INI file option to the X11 and SDL versions. Options can be 
+    specified in this file instead of entering them on the commandline. Any 
+    options entered on the commandline override options in the INI file.  
+    File is called stellarc. For the X11 and SDL versions, it can be in
+    either $HOME (as $HOME/.stellarc) or in /etc (as /etc/stellarc).  The
+    one in $HOME has higher priority than the one in /etc.
+
+  * Added snapshot support to the X11 and SDL versions. Pressing F12 saves 
+    the current screen in PNG format. Requires PNG library.
+
+  * Removed stella.pro file from the binary, resulting in large space
+    savings. The stella.pro file is no longer optional.  For the X11 and
+    SDL versions, it can be in either $HOME (as $HOME/.stella.pro) or in
+    /etc (as /etc/stella.pro). The one in $HOME has higher priority than
+    the one in /etc. For DOS and Win32 versions, the stella.pro file must
+    be in the same directory as the executable.
+
+  * Added pause functionality to the core. Implemented in DOS, X11, and
+    SDL versions for now.
+
+1.0 to 1.1: (February 26, 1999)
+
+  * DOS and Linux versions support real Atari 2600 paddles using a 
+    special PC game port adaptor
+
+  * Linux version uses the new 1.2.x joystick driver API
+
+  * Added support for the "-display" option to the X Window version
+
+  * Added support for private colormaps to the X Window version
+
+  * Fixed a few bugs in the Supercharger emulation
+
+    - A major bug in the ROM loading routine was fixed
+
+    - Multi-loading in "Escape from the Mindmaster" works correctly
+
+    - All Supercharger games load and execute at this point
+
+  * Added a small hack to the TIA code to fix a display problem in "Escape 
+    from the Mindmaster"
+
+  * Improved TIA emulation to support the RESPx multi-sprite trick
+
+1.0b1 to 1.0: (October 7, 1998)
+
+  * DOS version supports 320x200 and 320x240 graphics modes
+
+  * Several portability issues have been resolved 
+
+  * Preliminary support for Chris Wilkson's Megacart bank-switching scheme
+
+  * BSDI target included in makefile 
+
+  * Improved Users Manual in several "popular" formats
+
+0.7 to 1.0b1: (July 25, 1998)
+
+  * Supports the following controllers:
+
+      Joysticks, Paddles, Booster-Grip, Keyboard and Driving
+
+  * Supports the following bank switching methods:
+
+      2K, 3F, 4K, AR, E0, E7, F4SC, F6, F8, F8SC, FASC, FE
+
+  * Properties are associated with games using their MD5 checksum
+    calculated on the entire ROM image
+
+  * Uses the new 'stella.pro' file format for game properties
+
+  * Includes Erik's latest stella.pro properties file
+
+  * New frame rate throttle code for X windows GUI
+
+  * Based on the new and improved M6502 CPU emulation
+
+  * Improvements to TIA emulation
+
+    - Support HMOVE blanks
+
+    - Improved Cosmic Ark star field effect
+
+    - Some support for the RESPx multiple sprite trick
+
+    - Support NTSC and PAL palettes
+
+  * Improvements to PIA emulation (timing)
+
+  * Improved Supercharger emulation
+
+0.6 to 0.7: (June 7, 1997)
+
+  * Improved emulation speed of TIA and 6507
+
+  * Added Starpath Supercharger support
+
+  * Added Tigervision bank-switching support (3F bank-switching)
+
+  * Added pause game feature for Unix and DOS
+
+  * VCS files combined into a single builtin property file
+
+  * Added TIA HMOVE "feature" to support Cosmic Ark stars
+
+  * Improved TIA VSYNC code so that it works more like the real
+    thing (0.6 VSYNC code caused the graphics of some games to
+    be off such as Alien and Battle Zone)
+
+  * Added two 6507 emulators: one is designed to act more like
+    the real thing, while the other is designed to be as fast as
+    possible (required for Supercharger support)
+
+  * Changed TIA peeking so lower nibble of byte read is the same
+    as the TIA address being accessed (Warlords now works)
+  
+0.5 to 0.6: (January 18, 1997)
+
+  * Fixed collision detection problem (Freeway works)
+
+  * Changed PIA timing code to fix screen jitters
+
+  * Added new bank-switching methods: F4SC (Fatal Run), E7 (Burgertime)
+
+  * Fixed some code in the TIA emulation that caused SEGFAULTS
+
+  * Improved frame rate throttling code to work better on fast machines
+
+  * Improved TIA emulation (missle graphics are fully emulated now)
+
+  * Included Bob Colbert's "Okie Dokie" game
+
+  * Uses version 1.1 of the TIA Sound library by Ron Fries
+
+0.4 to 0.5: (November 17, 1996)
+
+  * Added sound support
+
+  * Added new bank-switching methods: F8SC (Defender II), FASC (CBS RAM+)
+
+  * Changed TIA so peeking $E and $F return $F not $0 for Haunted House
+
+  * Changed PIA timing code to fix screen jitters in Frogger
+
+  * Addressing scheme rewritten
+
+  * Optimized 6507 memory accesses
+
+  * Randomized memory in PIA upon startup
+
+  * Removed auto-disabling of objects at the start of a frame
+    so you can't walk through walls in Adventure
+
+  * Changed the X windows terminal update method to make it faster and
+    easier to understand
+
+0.3 to 0.4 (August 28, 1996):
+
+  * TIA code has been optimized some
+
+  * Some games can be played with just a ROM image
+
+  * New search method for ROM images (no more STELLA_PATH)
+
+  * Delta screen update supported
+
+  * Better error handling added to the "core"
+
+0.2 to 0.3 (July 12, 1996):
+
+  * Keyboard joystick support is much better (Daniel Marks)
+
+  * Paddles are now supported via the mouse (Bradford Mott)
+
+  * Many portability issues have been resolved (Keith Wilkins)
+
+  * Fixed a problem with the 6507 ADC and SBC instructions that caused
+    some games (Enduro) not to work correctly (Bradford Mott)
+
+  * Power Macintosh port (Aaron Giles)
+
+  * Windows 95 & NT port (Jeff Miller)
+

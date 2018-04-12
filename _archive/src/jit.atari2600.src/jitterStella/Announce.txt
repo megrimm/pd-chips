@@ -1,0 +1,47 @@
+===============================================================================
+
+     SSSS    tt          lll  lll
+    SS  SS   tt           ll   ll
+    SS     tttttt  eeee   ll   ll   aaaa
+     SSSS    tt   ee  ee  ll   ll      aa
+        SS   tt   eeeeee  ll   ll   aaaaa  --  "An Atari 2600 VCS Emulator"
+    SS  SS   tt   ee      ll   ll  aa  aa
+     SSSS     ttt  eeeee llll llll  aaaaa
+
+===============================================================================
+                  Release 1.4.1 for Linux, Mac OSX and Windows
+===============================================================================
+
+The Atari 2600 Video Computer System (VCS), introduced in 1977, was the most 
+popular home video game system of the early 1980's.  Now you can enjoy all of 
+your favorite Atari 2600 games on your PC thanks to Stella! 
+
+Stella is a multi-platform Atari 2600 VCS emulator.  It allows you to play all
+of your favorite Atari 2600 games again!  Stella was originally developed for
+Linux by Bradford W. Mott, however, it has been ported to a number of other
+platforms.
+
+This is the 1.4.1 release of Stella for Linux, Mac OSX and Windows.  Distributions
+for other operating systems will appear as they become available. The
+distributions currently available are:
+
+  * Binary distribution in RPM format for Linux (stella-1.4.1-1.i586.rpm)
+
+  * Binary distribution for Mac OSX (StellaOSX1.4.1.dmg.gz)
+
+  * Binary distribution for Windows (stella-1.4.1-win32.zip)
+
+  * Source code distribution for Linux, Mac OSX and Windows (stella-1.4.1-src.tar.gz)
+
+  * Source code in SRPM format for Linux RPM-based systems (stella-1.4.1-1.src.rpm)
+
+PLEASE DO NOT WRITE ASKING FOR ROM IMAGES TO USE WITH STELLA! ALL SUCH
+REQUESTS WILL BE IGNORED!
+
+
+Distribution Site
+================= 
+
+The Stella distributions can be obtained from the Stella Website at:
+
+  http://stella.sourceforge.net
